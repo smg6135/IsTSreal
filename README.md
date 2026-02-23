@@ -1,6 +1,6 @@
 # 🔍 YouTube Shorts Fact Checker
 
-![IsTSreal](istsreal.png)
+![IsTSreal](istsreal.png?v=2)
 
 AI-powered Chrome extension that fact-checks YouTube Shorts using OpenAI's Whisper (transcription) and GPT-5.2 (analysis).
 
