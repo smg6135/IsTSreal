@@ -64,3 +64,7 @@ Each fact-check costs roughly **$0.01-0.04**.
 
 - Chrome 110+
 - OpenAI API key with access to Whisper and GPT-5.2
+
+## My beautiful Pitch Deck
+
+![IsTSReal Pitch Deck](beautifulpitchdeck.png)
