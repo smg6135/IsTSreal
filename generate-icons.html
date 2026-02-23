@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head><title>Icon Generator</title></head>
+<body>
+  <p>Right-click each canvas and "Save image as..." to the icons/ folder.</p>
+  <div>
+    <h3>icon16.png</h3>
+    <canvas id="c16" width="16" height="16"></canvas>
+  </div>
+  <div>
+    <h3>icon48.png</h3>
+    <canvas id="c48" width="48" height="48"></canvas>
+  </div>
+  <div>
+    <h3>icon128.png</h3>
+    <canvas id="c128" width="128" height="128"></canvas>
+  </div>
+  <script>
+    function drawIcon(canvasId, size) {
+      const canvas = document.getElementById(canvasId);
+      const ctx = canvas.getContext("2d");
+      const r = size / 2;
+
+      // Background circle
+      const grad = ctx.createLinearGradient(0, 0, size, size);
+      grad.addColorStop(0, "#4285f4");
+      grad.addColorStop(1, "#34a853");
+      ctx.fillStyle = grad;
+      ctx.beginPath();
+      ctx.arc(r, r, r, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Magnifying glass
+      ctx.strokeStyle = "#fff";
+      ctx.fillStyle = "transparent";
+      ctx.lineWidth = size * 0.08;
+      ctx.lineCap = "round";
+
+      const glassR = size * 0.25;
+      const cx = r - size * 0.05;
+      const cy = r - size * 0.05;
+
+      ctx.beginPath();
+      ctx.arc(cx, cy, glassR, 0, Math.PI * 2);
+      ctx.stroke();
+
+      // Handle
+      const angle = Math.PI / 4;
+      const hx = cx + Math.cos(angle) * glassR;
+      const hy = cy + Math.sin(angle) * glassR;
+      ctx.beginPath();
+      ctx.moveTo(hx, hy);
+      ctx.lineTo(hx + size * 0.18, hy + size * 0.18);
+      ctx.stroke();
+
+      // Checkmark inside glass
+      ctx.strokeStyle = "#fff";
+      ctx.lineWidth = size * 0.06;
+      const checkStartX = cx - glassR * 0.35;
+      const checkStartY = cy + glassR * 0.05;
+      ctx.beginPath();
+      ctx.moveTo(checkStartX, checkStartY);
+      ctx.lineTo(cx - glassR * 0.05, cy + glassR * 0.35);
+      ctx.lineTo(cx + glassR * 0.4, cy - glassR * 0.3);
+      ctx.stroke();
+    }
+
+    drawIcon("c16", 16);
+    drawIcon("c48", 48);
+    drawIcon("c128", 128);
+  </script>
+</body>
+</html>

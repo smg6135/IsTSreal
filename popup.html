@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IsTSreal</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      width: 340px;
+      min-height: 200px;
+      font-family: "Google Sans", "Segoe UI", Roboto, Arial, sans-serif;
+      background: #1e1e1e;
+      color: #e8eaed;
+      padding: 0;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #4285f4, #34a853);
+      padding: 20px;
+      text-align: center;
+    }
+
+    .header h1 {
+      font-size: 18px;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+
+    .header p {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .content {
+      padding: 20px;
+    }
+
+    .status {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px;
+      background: #2a2a2a;
+      border-radius: 10px;
+      margin-bottom: 16px;
+    }
+
+    .status-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .status-dot.active {
+      background: #34a853;
+      box-shadow: 0 0 6px rgba(52, 168, 83, 0.5);
+    }
+
+    .status-dot.inactive {
+      background: #ea4335;
+    }
+
+    .status-text {
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    .instructions {
+      font-size: 13px;
+      line-height: 1.6;
+      color: #bdc1c6;
+    }
+
+    .instructions ol {
+      padding-left: 20px;
+      margin-top: 8px;
+    }
+
+    .instructions li {
+      margin-bottom: 6px;
+    }
+
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 12px;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: #4285f4;
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: #5a95f5;
+    }
+
+    .btn-secondary {
+      background: #2a2a2a;
+      color: #8ab4f8;
+      border: 1px solid #333;
+    }
+
+    .btn-secondary:hover {
+      background: #333;
+    }
+
+    .footer {
+      padding: 12px 20px;
+      text-align: center;
+      font-size: 11px;
+      color: #666;
+      border-top: 1px solid #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>🔍 IsTSreal</h1>
+    <p>AI-powered fact checking for YouTube Shorts</p>
+  </div>
+
+  <div class="content">
+    <div class="status" id="status-container">
+      <div class="status-dot inactive" id="status-dot"></div>
+      <div class="status-text" id="status-text">Checking API key...</div>
+    </div>
+
+    <div class="instructions">
+      <strong>How to use:</strong>
+      <ol>
+        <li>Navigate to any YouTube Short</li>
+        <li>A sidebar appears and <strong>auto-records</strong> the audio</li>
+        <li>Watch the <strong>live transcript</strong> stream in</li>
+        <li>GPT analysis streams <strong>token-by-token</strong> in real time</li>
+        <li>Review claims, verdicts, and sources</li>
+      </ol>
+    </div>
+
+    <button class="btn btn-secondary" id="options-btn">⚙️ Configure API Key</button>
+  </div>
+
+  <div class="footer">
+    Powered by OpenAI Whisper + GPT-4o
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

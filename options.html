@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Settings — IsTSreal</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Google Sans", "Segoe UI", Roboto, Arial, sans-serif;
+      background: #1e1e1e;
+      color: #e8eaed;
+      padding: 24px;
+      min-width: 400px;
+    }
+
+    h1 {
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      font-size: 13px;
+      color: #9aa0a6;
+      margin-bottom: 24px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #8ab4f8;
+    }
+
+    input[type="password"],
+    input[type="text"],
+    select {
+      width: 100%;
+      padding: 10px 14px;
+      background: #2a2a2a;
+      border: 1px solid #444;
+      border-radius: 8px;
+      color: #e8eaed;
+      font-size: 14px;
+      font-family: "Roboto Mono", monospace;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    input:focus,
+    select:focus {
+      border-color: #4285f4;
+    }
+
+    .hint {
+      font-size: 11px;
+      color: #9aa0a6;
+      margin-top: 6px;
+    }
+
+    .hint a {
+      color: #8ab4f8;
+      text-decoration: none;
+    }
+
+    .hint a:hover {
+      text-decoration: underline;
+    }
+
+    .btn {
+      padding: 10px 24px;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-save {
+      background: #4285f4;
+      color: #fff;
+    }
+
+    .btn-save:hover {
+      background: #5a95f5;
+    }
+
+    .toast {
+      display: none;
+      padding: 10px 16px;
+      background: #34a853;
+      color: #fff;
+      border-radius: 8px;
+      font-size: 13px;
+      margin-top: 16px;
+    }
+
+    .toast.show {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <h1>⚙️ Settings</h1>
+  <p class="subtitle">Configure your OpenAI API key for fact-checking</p>
+
+  <div class="form-group">
+    <label for="api-key">OpenAI API Key</label>
+    <input type="password" id="api-key" placeholder="sk-..." />
+    <p class="hint">
+      Get your API key from
+      <a href="https://platform.openai.com/api-keys" target="_blank">platform.openai.com/api-keys</a>.
+      Your key is stored locally and never shared.
+    </p>
+  </div>
+
+  <div class="form-group">
+    <label for="model-select">GPT Model</label>
+    <select id="model-select">
+      <option value="gpt-5.2">GPT-5.2 (Recommended)</option>
+      <option value="gpt-5-mini">GPT-5 Mini (Faster / Cheaper)</option>
+      <option value="gpt-4o">GPT-4o</option>
+    </select>
+  </div>
+
+  <button class="btn btn-save" id="save-btn">Save Settings</button>
+
+  <div class="toast" id="toast">✅ Settings saved successfully!</div>
+
+  <script src="options.js"></script>
+</body>
+</html>

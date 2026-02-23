@@ -1,0 +1,269 @@
+/* ══════════════════════════════════════════════
+   FACT CHECK BUTTON
+   ══════════════════════════════════════════════ */
+
+#ytfc-btn {
+  position: fixed;
+  bottom: 100px;
+  right: 20px;
+  z-index: 99999;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #1a73e8, #1e8e3e);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: "Google Sans", "Segoe UI", Roboto, Arial, sans-serif;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+  transition: all 0.2s ease;
+  letter-spacing: 0.3px;
+}
+
+#ytfc-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
+  filter: brightness(1.1);
+}
+
+#ytfc-btn:active {
+  transform: translateY(0);
+}
+
+#ytfc-btn.loading {
+  opacity: 0.7;
+  cursor: wait;
+  animation: ytfc-pulse 1.5s ease-in-out infinite;
+}
+
+#ytfc-btn:disabled {
+  pointer-events: none;
+}
+
+@keyframes ytfc-pulse {
+  0%, 100% { opacity: 0.7; }
+  50%      { opacity: 0.4; }
+}
+
+/* ══════════════════════════════════════════════
+   RESULTS PANEL
+   ══════════════════════════════════════════════ */
+
+#ytfc-panel {
+  position: fixed;
+  top: 50%;
+  right: 16px;
+  transform: translateY(-50%);
+  z-index: 100000;
+  width: 370px;
+  max-height: 85vh;
+  background: #161618;
+  border: 1px solid #2a2a2e;
+  border-radius: 14px;
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.7);
+  font-family: "Google Sans", "Segoe UI", Roboto, Arial, sans-serif;
+  color: #e8eaed;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  animation: ytfc-slideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes ytfc-slideIn {
+  from { opacity: 0; transform: translateY(-50%) translateX(24px); }
+  to   { opacity: 1; transform: translateY(-50%) translateX(0); }
+}
+
+/* ── Panel header ── */
+.ytfc-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: linear-gradient(135deg, #1a73e8, #1e8e3e);
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.ytfc-panel-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.ytfc-close-btn {
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  color: #fff;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s;
+}
+
+.ytfc-close-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* ── Live dot ── */
+.ytfc-live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  flex-shrink: 0;
+  transition: background 0.3s;
+}
+
+.ytfc-live-dot.live {
+  background: #ff4444;
+  box-shadow: 0 0 8px rgba(255, 68, 68, 0.6);
+  animation: ytfc-dot-pulse 1.2s ease-in-out infinite;
+}
+
+.ytfc-live-dot.done {
+  background: #34a853;
+  box-shadow: 0 0 6px rgba(52, 168, 83, 0.5);
+  animation: none;
+}
+
+@keyframes ytfc-dot-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.5; transform: scale(0.75); }
+}
+
+/* ── Panel body ── */
+.ytfc-panel-body {
+  padding: 14px 16px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+/* ── Sections ── */
+.ytfc-section {
+  margin-bottom: 14px;
+}
+
+.ytfc-section h3 {
+  font-size: 11px;
+  font-weight: 700;
+  color: #8ab4f8;
+  margin: 0 0 6px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+/* ── Transcript ── */
+.ytfc-transcript {
+  font-size: 12px;
+  line-height: 1.5;
+  color: #9aa0a6;
+  background: #1e1e22;
+  padding: 10px 12px;
+  border-radius: 8px;
+  max-height: 80px;
+  overflow-y: auto;
+  margin: 0;
+  border: 1px solid #2a2a2e;
+}
+
+/* ── Analysis ── */
+.ytfc-analysis {
+  font-size: 13px;
+  line-height: 1.65;
+  color: #e8eaed;
+}
+
+.ytfc-analysis strong {
+  color: #8ab4f8;
+}
+
+/* ── Streaming cursor ── */
+.ytfc-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 13px;
+  background: #8ab4f8;
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  animation: ytfc-blink 0.7s step-end infinite;
+}
+
+@keyframes ytfc-blink {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0; }
+}
+
+/* ── Error ── */
+.ytfc-error {
+  color: #f28b82;
+  font-size: 13px;
+  padding: 10px 12px;
+  background: #2a1e1e;
+  border-radius: 8px;
+  border: 1px solid #3a2020;
+}
+
+/* ── Sources ── */
+.ytfc-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ytfc-section ul li {
+  margin-bottom: 5px;
+  padding-left: 14px;
+  position: relative;
+}
+
+.ytfc-section ul li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: #8ab4f8;
+  font-size: 11px;
+}
+
+.ytfc-section ul li a {
+  color: #8ab4f8;
+  text-decoration: none;
+  font-size: 12px;
+  transition: color 0.15s;
+}
+
+.ytfc-section ul li a:hover {
+  color: #aecbfa;
+  text-decoration: underline;
+}
+
+/* ── Scrollbar ── */
+.ytfc-panel-body::-webkit-scrollbar,
+.ytfc-transcript::-webkit-scrollbar {
+  width: 5px;
+}
+
+.ytfc-panel-body::-webkit-scrollbar-track,
+.ytfc-transcript::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.ytfc-panel-body::-webkit-scrollbar-thumb,
+.ytfc-transcript::-webkit-scrollbar-thumb {
+  background: #444;
+  border-radius: 3px;
+}
+
+.ytfc-panel-body::-webkit-scrollbar-thumb:hover,
+.ytfc-transcript::-webkit-scrollbar-thumb:hover {
+  background: #666;
+}
